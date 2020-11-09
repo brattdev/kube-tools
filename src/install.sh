@@ -2,6 +2,14 @@
 
 set -o errexit
 
+echo "downloading zip"
+apt install -y zip
+
+AWSCLI=2.0.30
+curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWSCLI}.zip -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+
 KUBECTL=1.18.2
 echo "downloading kubectl ${KUBECTL}"
 curl -sL https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL}/bin/linux/amd64/kubectl \
@@ -59,3 +67,7 @@ echo "downloading jq"
 curl -sL https://github.com/stedolan/jq/releases/latest/download/jq-linux64 \
 -o /usr/local/bin/jq && chmod +x /usr/local/bin/jq
 jq --version
+
+echo "downloading grep"
+apt install -y grep
+grep --version
