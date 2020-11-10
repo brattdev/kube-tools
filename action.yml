@@ -26,7 +26,5 @@ runs:
   args:
     - ${{ inputs.command }}
     - ${{ inputs.kubectl }}
-    - ${{ inputs.kustomize }}
     - ${{ inputs.helm }}
-    - ${{ inputs.helmv3 }}
-    - ${{ inputs.kubeseal }}
+    - ${{ inputs.awscli }}
