@@ -19,20 +19,27 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run Kubernetes tools
-        uses: stefanprodan/kube-tools@v1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          kubectl: 1.18.2
-          kustomize: 3.5.5
-          helm: 2.16.7
-          helmv3: 3.2.1
-          kubeseal: 0.12.5
-          kubeaudit: 0.11.5
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - uses: actions/checkout@v2
+        name: Run Kubernetes tools
+        uses: systemctldev/kube-tools@v1
+        with:
+          kubectl: 1.18.4
+          helm: 3.3.0
+          awscli: 2.0.30
           command: |
             echo "Run conftest"
-            kustomize build test/kustomize | conftest test -p test/policy -
-            echo "Run kubeval"
-            helmv3 template ./charts/test | kubeval --strict
+            echo "Configure Kubernetes"
+            aws eks update-kubeconfig --name cactus-eksctl
 ```
 
