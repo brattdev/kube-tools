@@ -33,6 +33,14 @@ if [[ "${KUBESEAL_VER}" != "" ]]; then
   -o /usr/local/bin/kubeseal && chmod +x /usr/local/bin/kubeseal
 fi
 
+AWSCLI=$7
+if [[ "${AWSCLI}" != "" ]]; then
+  apt install -y zip
+  curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWSCLI}.zip -o "awscliv2.zip"
+  unzip awscliv2.zip
+  ./aws/install
+fi
+
 echo ">>> Executing command <<<"
 echo ""
 echo ""
