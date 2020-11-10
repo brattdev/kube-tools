@@ -10,16 +10,10 @@ inputs:
     required: true
   kubectl:
     description: 'kubectl version'
-  kustomize:
-    description: 'kustomize version'
   helm:
     description: 'helm version'
-  helmv3:
-    description: 'helm version'
-  kubeseal:
-    description: 'kubeseal version'
-  kubeaudit:
-    description: 'kubeaudit version'
+  awscli:
+    description: 'awscli version'
 runs:
   using: 'docker'
   image: 'Dockerfile'
