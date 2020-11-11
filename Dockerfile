@@ -1,4 +1,4 @@
-FROM ubuntu-latest
+FROM ubuntu:latest
 
 COPY LICENSE README.md /
 COPY src/ /
