@@ -38,4 +38,3 @@ jobs:
             echo "Configure Kubernetes"
             aws eks update-kubeconfig --name cactus-eksctl
 ```
-
