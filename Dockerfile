@@ -1,4 +1,4 @@
-FROM golang:1.15
+FROM ubuntu-latest
 
 COPY LICENSE README.md /
 COPY src/ /
