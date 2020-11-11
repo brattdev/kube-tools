@@ -16,7 +16,7 @@ inputs:
     description: 'awscli version'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://systemctldev/kube-tools:v1.6.0'
   args:
     - ${{ inputs.command }}
     - ${{ inputs.kubectl }}
