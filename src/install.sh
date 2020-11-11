@@ -3,6 +3,7 @@
 set -o errexit
 
 echo "downloading zip"
+apt update
 apt install -y zip
 
 AWSCLI=2.0.30
